@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 const Hero = () => {
@@ -8,10 +8,13 @@ const Hero = () => {
   const [price, setPrice] = useState(null);
   const [showFormButton, setShowFormButton] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [address, setAddress] = useState("");
 
   const formRef = useRef();
+  const addressInputRef = useRef(null);
+  const autocompleteRef = useRef(null); // ✅ 중복 초기화 방지
 
-  // 블라인드 종류별 단가 (m² 기준)
+  // 블라인드 단가
   const priceTable = {
     curtain: 130,
     roller: 80,
@@ -22,29 +25,22 @@ const Hero = () => {
 
   const calculatePrice = () => {
     if (!width || !height) return;
-
     const area = (width / 1000) * (height / 1000);
     const unitPrice = priceTable[blindType] || 0;
     let total = (area * unitPrice).toFixed(2);
-
-      // ✅ 최소 120 보장
-  if (total < 120) {
-    total = 120;
-  }
-
+    if (total < 120) total = 120;
     setPrice(total);
     setShowFormButton(true);
   };
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
-        "service_wj2fibl", // EmailJS Service ID
-        "template_o6r1nft", // EmailJS Template ID
+        "service_wj2fibl",
+        "template_o6r1nft",
         formRef.current,
-        "Fg5pzJRE6Jolowm4Y" // EmailJS Public Key
+        "Fg5pzJRE6Jolowm4Y"
       )
       .then(
         () => {
@@ -57,6 +53,38 @@ const Hero = () => {
         }
       );
   };
+
+  // ✅ 모달이 열리고 input이 실제로 DOM에 생긴 후 Autocomplete 초기화
+  useEffect(() => {
+    if (!isModalOpen) return;                        // 모달 닫혀있으면 스킵
+    if (!window.google) return;                      // 스크립트 아직이면 스킵
+    const inputEl = addressInputRef.current;
+    if (!inputEl) return;                            // input 아직이면 스킵
+    if (autocompleteRef.current) return;             // 이미 초기화되어 있으면 재생성 X
+
+    const ac = new window.google.maps.places.Autocomplete(inputEl, {
+      types: ["geocode"],
+      componentRestrictions: { country: "au" },
+      // (선택) 필요한 필드만
+      fields: ["formatted_address", "geometry", "place_id", "address_components"],
+    });
+    autocompleteRef.current = ac;
+
+    const listener = ac.addListener("place_changed", () => {
+      const place = ac.getPlace();
+      // 컨트롤드 input이므로 상태를 반드시 업데이트
+      setAddress(place?.formatted_address || inputEl.value || "");
+    });
+
+    // ✅ 정리: 모달 닫을 때 리스너 제거 & 인스턴스 해제
+    return () => {
+      if (listener) window.google.maps.event.removeListener(listener);
+      if (autocompleteRef.current) {
+        window.google.maps.event.clearInstanceListeners(autocompleteRef.current);
+        autocompleteRef.current = null;
+      }
+    };
+  }, [isModalOpen]); // 🔑 모달 열림 상태를 의존성으로
 
   return (
     <div className='flex flex-col items-start justify-center px-6 md:px-16 lg:px-24 xl:px-32 text-white bg-[url("/src/assets/heroMain.jpg")] bg-no-repeat bg-cover bg-center h-screen'>
@@ -144,7 +172,7 @@ const Hero = () => {
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl p-6 w-full max-w-lg text-black relative">
             <h2 className="text-xl font-bold mb-4">Request a Quote</h2>
-            
+
             <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
               <div>
                 <label className="block text-sm mb-1">Name</label>
@@ -160,8 +188,16 @@ const Hero = () => {
               </div>
               <div>
                 <label className="block text-sm mb-1">Address</label>
-                <input type="text" name="address" placeholder="Enter your address"
-                  className="w-full border p-2 rounded-md" />
+                {/* ✅ Google Places Autocomplete input */}
+                <input
+                  type="text"
+                  name="address"
+                  ref={addressInputRef}
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Enter your address"
+                  className="w-full border p-2 rounded-md"
+                />
               </div>
               <div>
                 <label className="block text-sm mb-1">Notes</label>
@@ -176,14 +212,11 @@ const Hero = () => {
 
               <button
                 type="submit"
-                className="bg-[#49B9FF] text-black px-4 py-2 rounded-lg w-full font-bold mt-2
-                hover:bg-[#36A6E0] active:bg-[#2A89C0]"
-                >
+                className="bg-[#49B9FF] text-black px-4 py-2 rounded-lg w-full font-bold mt-2 hover:bg-[#36A6E0] active:bg-[#2A89C0]">
                  Submit Request
               </button>
             </form>
 
-            {/* 닫기 버튼 */}
             <button
               className="absolute top-2 right-2 text-gray-600"
               onClick={() => setIsModalOpen(false)}

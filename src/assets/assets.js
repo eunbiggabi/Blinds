@@ -39,8 +39,10 @@ import totalBookingIcon from "./totalBookingIcon.svg";
 import totalRevenueIcon from "./totalRevenueIcon.svg";
 import nice from "./nice.svg";
 import blinds from "./blinds.png";
+import kaiblindslogo from "./kaiblindslogo.jpeg";
 
 export const assets = {
+    kaiblindslogo,
     blinds,
     logo,
     searchIcon,
