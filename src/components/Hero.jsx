@@ -102,7 +102,7 @@ const Hero = () => {
       </p>
 
       {/* 가격 계산기 */}
-      <div className="bg-black/60 p-6 rounded-2xl mt-6 w-full max-w-md">
+      <div className="bg-black/60 p-6 rounded-2xl mt-6 w-full max-w-xl mt-30">
         <h2 className="text-lg font-bold mb-4">Quick Price Calculator</h2>
 
         <label className="block mb-2 text-sm">Blind Type</label>

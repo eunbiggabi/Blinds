@@ -41,6 +41,58 @@ import nice from "./nice.svg";
 import blinds from "./blinds.png";
 import kaiblindslogo from "./kaiblindslogo.jpeg";
 
+// 블라인드 이미지
+
+    // awning
+import awningImg1 from "./awningImg1.jpg";
+
+    // curtain
+import curtainImg1 from "./curtainImg1.jpg";
+import curtainImg2 from "./curtainImg2.jpg";
+import curtainImg3 from "./curtainImg3.jpg";
+import curtainImg4 from "./curtainImg4.jpg";
+import curtainImg5 from "./curtainImg5.jpg";
+import curtainImg6 from "./curtainImg6.jpg";
+
+    //roller
+import rollerImg1 from "./rollerImg1.jpg";
+import rollerImg2 from "./rollerImg2.jpg";
+import rollerImg3 from "./rollerImg3.jpg";
+import rollerImg4 from "./rollerImg4.jpg";
+import rollerImg5 from "./rollerImg5.jpg";
+import rollerImg6 from "./rollerImg6.jpg";
+import rollerImg7 from "./rollerImg7.jpg";
+import rollerImg8 from "./rollerImg8.jpg";
+
+    // vertical
+import verticalImg1 from "./verticalImg1.jpg";
+import verticalImg2 from "./verticalImg2.jpg";
+import verticalImg3 from "./verticalImg3.jpg";
+import verticalImg4 from "./verticalImg4.jpg";
+import verticalImg5 from "./verticalImg5.jpg";
+import verticalImg6 from "./verticalImg6.jpg";
+
+    // shutter
+import shutterImg1 from "./shutterImg1.jpg";
+import shutterImg2 from "./shutterImg2.jpg";
+import shutterImg3 from "./shutterImg3.jpg";
+import shutterImg4 from "./shutterImg4.jpg";
+import shutterImg5 from "./shutterImg5.jpg";
+import shutterImg6 from "./shutterImg6.jpg";
+import shutterImg7 from "./shutterImg7.jpg";
+
+    // other
+
+import otherImg1 from "./otherImg1.jpg"
+import otherImg2 from "./otherImg2.jpg"
+import otherImg3 from "./otherImg3.jpg"
+import otherImg4 from "./otherImg4.jpg"
+import otherImg5 from "./otherImg5.jpg"
+
+
+
+
+
 export const assets = {
     kaiblindslogo,
     blinds,
@@ -77,6 +129,40 @@ export const assets = {
     totalBookingIcon,
     totalRevenueIcon,
     nice,
+    awningImg1,
+    curtainImg1,
+    curtainImg2,
+    curtainImg3,
+    curtainImg4,
+    curtainImg5,
+    curtainImg6,
+    rollerImg1,
+    rollerImg2,
+    rollerImg3,
+    rollerImg4,
+    rollerImg5,
+    rollerImg6,
+    rollerImg7,
+    rollerImg8,
+    verticalImg1,
+    verticalImg2,
+    verticalImg3,
+    verticalImg4,
+    verticalImg5,
+    verticalImg6,
+    shutterImg1,
+    shutterImg2,
+    shutterImg3,
+    shutterImg4,
+    shutterImg5,
+    shutterImg6,
+    shutterImg7,
+    otherImg1,
+    otherImg2,
+    otherImg3,
+    otherImg4,
+    otherImg5,
+     
 }
 
 export const cities = [
@@ -153,7 +239,7 @@ export const roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 399,
         "amenities": ["Room Service", "Mountain View", "Pool Access"],
-        "images": [roomImg1, roomImg2, roomImg3, roomImg4],
+        "images": [rollerImg2, rollerImg3, rollerImg4, rollerImg5, rollerImg6],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
@@ -165,7 +251,7 @@ export const roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 299,
         "amenities": ["Room Service", "Mountain View", "Pool Access"],
-        "images": [roomImg2, roomImg3, roomImg4, roomImg1],
+        "images": [verticalImg1, verticalImg2, verticalImg3, verticalImg4, verticalImg5],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:25:22.593Z",
         "updatedAt": "2025-04-10T06:25:22.593Z",
@@ -177,7 +263,7 @@ export const roomsDummyData = [
         "roomType": "Double Bed",
         "pricePerNight": 249,
         "amenities": ["Free WiFi", "Free Breakfast", "Room Service"],
-        "images": [roomImg3, roomImg4, roomImg1, roomImg2],
+        "images": [curtainImg1, curtainImg2, curtainImg3, curtainImg4, curtainImg5],
         "isAvailable": true,
         "createdAt": "2025-04-10T06:24:06.285Z",
         "updatedAt": "2025-04-10T06:24:06.285Z",
@@ -185,6 +271,30 @@ export const roomsDummyData = [
     },
     {
         "_id": "67f763d8197ac559e4089b7a",
+        "hotel": hotelDummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 199,
+        "amenities": ["Free WiFi", "Room Service", "Pool Access"],
+        "images": [shutterImg1, shutterImg2, shutterImg3, shutterImg4, shutterImg5],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:23:20.252Z",
+        "updatedAt": "2025-04-10T06:23:20.252Z",
+        "__v": 0
+    },
+    {
+        "_id": "67f763d8197ac559e4089b7b",
+        "hotel": hotelDummyData,
+        "roomType": "Single Bed",
+        "pricePerNight": 199,
+        "amenities": ["Free WiFi", "Room Service", "Pool Access"],
+        "images": [otherImg1, otherImg2, otherImg3, otherImg4, otherImg5],
+        "isAvailable": true,
+        "createdAt": "2025-04-10T06:23:20.252Z",
+        "updatedAt": "2025-04-10T06:23:20.252Z",
+        "__v": 0
+    },
+    {
+        "_id": "67f763d8197ac559e4089b7c",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
         "pricePerNight": 199,
