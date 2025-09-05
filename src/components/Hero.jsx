@@ -16,11 +16,10 @@ const Hero = () => {
 
   // 블라인드 단가
   const priceTable = {
-    curtain: 130,
     roller: 80,
-    panel: 120,
-    venetian: 130,
-    vertical: 90,
+    vertical:80,
+    curtain: 120,
+    shutter: 170,
   };
 
   const calculatePrice = () => {
@@ -111,11 +110,12 @@ const Hero = () => {
           onChange={(e) => setBlindType(e.target.value)}
           className="w-full p-2 rounded-md text-gray-500 mb-4 border border-gray-300 focus:border-black-500"
         >
-          <option value="curtain">Curtain</option>
+          
           <option value="roller">Roller Blind</option>
-          <option value="panel">Panel Blind</option>
-          <option value="venetian">Venetian Blind</option>
           <option value="vertical">Vertical Blind</option>
+          <option value="curtain">Curtain</option>
+          <option value="shutter">Shutter</option>
+          
         </select>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
