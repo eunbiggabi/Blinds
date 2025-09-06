@@ -195,6 +195,19 @@ export const facilityIcons = {
     "Pool Access": assets.poolIcon,
 };
 
+// Blind Feature Icons
+export const blindFeatureIcons = {
+  "Light Control": assets.lightControlIcon,
+  "UV Protection": assets.uvIcon,
+  "Privacy": assets.privacyIcon,
+  "Easy Clean": assets.easyCleanIcon,
+  "Durable Fabric": assets.durableIcon,
+  "Child Safe": assets.childSafeIcon,
+  "Energy Saving": assets.energyIcon,
+  "Custom Fit": assets.customFitIcon,
+  "Modern Design": assets.modernIcon,
+  "Motorized Option": assets.motorIcon,
+};
 
 // For Room Details Page
 export const roomCommonData = [
@@ -241,8 +254,9 @@ export const roomsDummyData = [
         "priceOptions": {
             "Screen": 90,
             "Light Filter": 85,
-             "Blockout":80,
+            "Blockout":80,
         },
+        "projectTimeline": "1~2 weeks",
         "_id": "67f7647c197ac559e4089b96",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -262,6 +276,7 @@ export const roomsDummyData = [
             "Light Filter": 80,
             "Blockout": 85,     // screen 없음
         },
+        "projectTimeline": "1~2 weeks",
         "_id": "67f76452197ac559e4089b8e",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -281,6 +296,7 @@ export const roomsDummyData = [
             "Sheer": 120,
             "Blockout": 140,
         },
+        "projectTimeline": "2~3 weeks",
         "_id": "67f76406197ac559e4089b82",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -300,6 +316,7 @@ export const roomsDummyData = [
             "Black": 220, 
             "White": 170  // 단일 옵션만 지원
         },
+        "projectTimeline": "1~2 months",
         "_id": "67f763d8197ac559e4089b7a",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
@@ -316,6 +333,7 @@ export const roomsDummyData = [
         "slug": "others",
         "price": 300,
         "priceOptions": null,
+        "projectTimeline": "a month",
         "_id": "67f763d8197ac559e4089b7b",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",

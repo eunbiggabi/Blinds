@@ -5,7 +5,7 @@ import QuoteModal from "../components/QuoteModal";
 import BlindsPriceCalculator from "../components/BlindsPriceCalculator";
 import { facilityIcons } from "../assets/assets";
 
-const BlindsDetails = () => {
+const BlindsDetails = ({blinds}) => {
   const { slug } = useParams();
   const [room, setRoom] = useState(null);
   const [mainImage, setMainImage] = useState(null);
@@ -13,6 +13,8 @@ const BlindsDetails = () => {
   // 모달 제어
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quoteData, setQuoteData] = useState(null);
+  const keys = Object.keys(blinds[0].priceOptions);
+
 
   useEffect(() => {
     const foundRoom = roomsDummyData.find((room) => room.slug === slug);
@@ -44,7 +46,19 @@ const BlindsDetails = () => {
     <div className="py-28 md:py-35 px-4 md:px-16 lg:px-16 xl:px-32">
       {/* 제목 */}
       <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
-        <h1 className="text-3xl md:text-4xl font-playfair">{room.name}</h1>
+        <h1 className="text-3xl md:text-4xl font-playfair">{room.name}
+          
+        </h1>
+        <p className="text-xs font-inter py-1.5 px-3 text-white 
+        bg-orange-500 rounded-full">Options</p>
+        <span className="font-inter text-sm">({keys.join(", ")})</span>
+      </div>
+
+      {/* blinds duration */}
+      <div className="flex items-center gap-1 mt-2">
+        <p className="text-xs font-inter py-1.5 px-3 text-white 
+        bg-blue-500 rounded-full ">Project Timeline</p>
+        <span className="ml-2 font-inter text-sm">{blinds[0].projectTimeline}</span>
       </div>
 
       {/* 이미지 */}
