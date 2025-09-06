@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { roomsDummyData } from "../assets/assets";
-import emailjs from "@emailjs/browser"; // EmailJS 불러오기
+import QuoteModal from "../components/QuoteModal";
+import BlindsPriceCalculator from "../components/BlindsPriceCalculator";
+import { facilityIcons } from "../assets/assets";
 
 const BlindsDetails = () => {
   const { slug } = useParams();
   const [room, setRoom] = useState(null);
   const [mainImage, setMainImage] = useState(null);
 
-  // 가격 계산 state
-  const [width, setWidth] = useState("");
-  const [height, setHeight] = useState("");
-  const [price, setPrice] = useState(null);
-
   // 모달 제어
-  const [showModal, setShowModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [quoteData, setQuoteData] = useState(null);
 
   useEffect(() => {
     const foundRoom = roomsDummyData.find((room) => room.slug === slug);
@@ -24,43 +22,14 @@ const BlindsDetails = () => {
     }
   }, [slug]);
 
-  const calculatePrice = () => {
-    if (!width || !height || !room?.price) return;
-    const area = (width / 1000) * (height / 1000);
-    let total = (area * room.price).toFixed(2);
-    if (total < 120) total = 120;
-    setPrice(total);
+  const handleOpenModal = (data) => {
+    setQuoteData({ ...data, blindType: room?.name }); // 방 이름도 같이 전달
+    setIsModalOpen(true);
   };
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    const templateParams = {
-      blindsType: room?.name,
-      width,
-      height,
-      price,
-      customer_name: e.target.name.value,
-      customer_email: e.target.email.value,
-      message: e.target.message.value,
-    };
-
-    emailjs
-      .send(
-        "YOUR_SERVICE_ID", // EmailJS service ID
-        "YOUR_TEMPLATE_ID", // EmailJS template ID
-        templateParams,
-        "YOUR_PUBLIC_KEY" // EmailJS public key
-      )
-      .then(
-        (result) => {
-          alert("견적 요청이 성공적으로 전송되었습니다!");
-          setShowModal(false);
-        },
-        (error) => {
-          alert("전송에 실패했습니다. 다시 시도해주세요.");
-        }
-      );
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setQuoteData(null);
   };
 
   if (!room) {
@@ -103,105 +72,86 @@ const BlindsDetails = () => {
         </div>
       </div>
 
+      {/* Blinds Highlight */}
+      <div className="flex flex-col md:flex-row md:justify-between mt-10">
+        <div className="flex flex-col">
+          <h1 className="text-3xl md:text-4xl font-playfair">
+            Our fabric range offers a three-tiered approach to light and privacy. </h1>
+            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+              {room.amenities.map((item, index) => (
+               <div key={index} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100">
+                  <img src={facilityIcons[item]} alt={item} className="w-5 h-5"/>
+                  <p className="text-xs">{item}</p>
+                </div>
+             
+            ))}  
+            </div>
+        </div>
+        {/* Blinds Price */}
+        <p className="text-2xl font-medium">${room.pricePerNight}/night</p>
+      </div>
+
+
+
       {/* 가격 계산기 */}
       {room.slug !== "others" && (
-        <div className="mt-10 bg-gray-100 p-6 rounded-2xl w-full max-w-lg">
-          <h2 className="text-lg font-bold mb-4">Quick Price Calculator</h2>
-
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <label className="block text-sm">Width (mm)</label>
-              <input
-                type="number"
-                value={width}
-                onChange={(e) => setWidth(e.target.value)}
-                className="w-full p-2 rounded-md border border-gray-300"
-              />
-            </div>
-            <div>
-              <label className="block text-sm">Height (mm)</label>
-              <input
-                type="number"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                className="w-full p-2 rounded-md border border-gray-300"
-              />
-            </div>
-          </div>
-
-          <button
-            onClick={calculatePrice}
-            className="bg-[#49B9FF] text-black px-4 py-2 rounded-lg w-full font-bold"
-          >
-            Calculate Price
-          </button>
-
-          {price && (
-            <div className="mt-4">
-              <p className="text-lg font-semibold">
-                Estimated Price: ${price}
-              </p>
-              <button
-                onClick={() => setShowModal(true)}
-                className="mt-3 bg-black text-white px-4 py-2 rounded-lg w-full font-bold"
-              >
-                Request a Quote
-              </button>
-            </div>
-          )}
+        <div className="">
+          <BlindsPriceCalculator basePrice={room.price} priceOptions={room.priceOptions} onRequestQuote={handleOpenModal} name={room.name}/>
         </div>
       )}
 
-      {/* EmailJS 모달 */}
-      {showModal && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-xl w-full max-w-md">
-            <h2 className="text-xl font-bold mb-4">Request a Quote</h2>
-            <form onSubmit={sendEmail} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                className="w-full p-2 border rounded-md"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                className="w-full p-2 border rounded-md"
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Additional Message"
-                className="w-full p-2 border rounded-md"
-                rows="3"
-              />
-              {/* 숨겨진 필드 (자동 채워짐) */}
-              <input type="hidden" name="blindsType" value={room?.name} />
-              <input type="hidden" name="width" value={width} />
-              <input type="hidden" name="height" value={height} />
-              <input type="hidden" name="price" value={price} />
-
-              <button
-                type="submit"
-                className="bg-[#49B9FF] text-black px-4 py-2 rounded-lg w-full font-bold"
-              >
-                Send Request
-              </button>
-            </form>
-            <button
-              onClick={() => setShowModal(false)}
-              className="mt-3 text-sm text-gray-600 underline w-full text-center"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
+      {/* 모달 */}
+      <QuoteModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        quoteData={quoteData}
+      />
     </div>
   );
 };
 
 export default BlindsDetails;
+
+
+      {/* CheckIn CheckOut Form */}
+      // <form className="flex flex-col md:flex-row items-start md:items-center 
+      // justify-between bg-white shadow-[0px_0px_20px_rgba(0,0,0,0.15)] p-6 rounded-xl
+      // mx-auto mt-16 max-w-6xl" >
+
+      //   <div className="flex flex-col flex-wrap md:flex-row items-start md:items-center
+      //   gap-4 md:gap-10 text-gray-500">
+
+      //      <div className="flex flex-col">
+      //       <label htmlFor="" className="font-medium">height</label>
+      //       <select type="number"
+      //       placeholder="Height"
+      //       className="w-full rounded border border-gray-300 px-3 
+      //       py-2 mt-1.5 outline-none" required/>
+      //     </div>
+
+      //     <div className="flex flex-col">
+      //       <label htmlFor="" className="font-medium">Weight</label>
+      //       <input type="number"
+      //       placeholder="Weight"
+      //       className="w-full rounded border border-gray-300 px-3 
+      //       py-2 mt-1.5 outline-none" required/>
+      //     </div>
+
+      //      <div className="flex flex-col">
+      //       <label htmlFor="" className="font-medium">height</label>
+      //       <input type="number"
+      //       placeholder="Height"
+      //       className="w-full rounded border border-gray-300 px-3 
+      //       py-2 mt-1.5 outline-none" required/>
+      //     </div>
+
+
+      //   </div>
+
+      //   <button type="submit" className="bg-primary hover:bg-primary-dull active:scale-95 
+      //   transition-all text-white rounded-md max-md:w-full max-md:mt-6 md:px-25 py-3
+      //   md:py-4 text-base cursor-pointer">
+          
+      // </button>
+
+      // </form>

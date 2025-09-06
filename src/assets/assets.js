@@ -195,6 +195,7 @@ export const facilityIcons = {
     "Pool Access": assets.poolIcon,
 };
 
+
 // For Room Details Page
 export const roomCommonData = [
     { icon: assets.homeIcon, title: "Clean & Safe Stay", description: "A well-maintained and hygienic space just for you." },
@@ -237,6 +238,11 @@ export const roomsDummyData = [
         "name": "Roller Blinds",
         "slug": "roller",
         "price": 80,
+        "priceOptions": {
+            "Screen": 90,
+            "Light Filter": 85,
+             "Blockout":80,
+        },
         "_id": "67f7647c197ac559e4089b96",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -252,6 +258,10 @@ export const roomsDummyData = [
         "name": "Verticla Blinds",
         "slug": "vertical",
         "price": 80,
+        "priceOptions": {
+            "Light Filter": 80,
+            "Blockout": 85,     // screen 없음
+        },
         "_id": "67f76452197ac559e4089b8e",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -267,6 +277,10 @@ export const roomsDummyData = [
         "name": "Curtain",
         "slug": "curtain",
         "price": 120,
+        "priceOptions": {
+            "Sheer": 120,
+            "Blockout": 140,
+        },
         "_id": "67f76406197ac559e4089b82",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -282,6 +296,10 @@ export const roomsDummyData = [
         "name": "Shutter",
         "slug": "shutter",
         "price": 170,
+        "priceOptions": {
+            "Black": 220, 
+            "White": 170  // 단일 옵션만 지원
+        },
         "_id": "67f763d8197ac559e4089b7a",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
@@ -297,6 +315,7 @@ export const roomsDummyData = [
         "name": "Others",
         "slug": "others",
         "price": 300,
+        "priceOptions": null,
         "_id": "67f763d8197ac559e4089b7b",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
