@@ -10,7 +10,7 @@ const FeaturedDestination = () => {
 
   return (
     <div className='flex flex-col items-center px-6 md:px-16 
-    lg:px-24 bg-slate-50 py-20'>
+    lg:px-24  bg-slate-50 py-20'>
 
       <Title title="Featured Blinds" subTitle="Experience the difference of premium 
       quality and innovative design. Our featured blinds are a curated collection 

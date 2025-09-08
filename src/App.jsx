@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import BlindsDetails from './pages/BlindsDetails';
 import { roomsDummyData } from './assets/assets';
+import Footer from './components/Footer';
 
 const App = () => {
   const isOwnerPath = useLocation().pathname.includes("owner");
@@ -16,8 +17,9 @@ const App = () => {
           <Route path="/" element={<Home />} />
           {/* slug 기반 블라인드 상세 페이지 */}
           <Route path="/blinds/:slug" element={<BlindsDetails blinds={roomsDummyData} />} />
-        </Routes>
+        </Routes>    
       </div>
+      <Footer />
     </div>
   );
 };
