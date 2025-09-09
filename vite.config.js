@@ -5,4 +5,5 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(),tailwindcss(),],
+   base: "/Blinds/", // <-- GitHub Pages 저장소 이름
 })

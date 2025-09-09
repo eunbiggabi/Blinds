@@ -257,6 +257,14 @@ export const roomsDummyData = [
             "Blockout":80,
         },
         "projectTimeline": "1~2 weeks",
+        "subtitle": "Clean and Modern",
+        "description": `
+            Roller blinds are timeless, practical, and one of the most popular choices. 
+            - Screen fabrics: keep your view outside while reducing glare.
+            - Light filter: create a soft warm atmosphere with privacy.
+            - Blockout: perfect for bedrooms and media rooms.
+            `,
+        "trend": "Neutral tones are popular, with bold accents like deep green and navy.",
         "_id": "67f7647c197ac559e4089b96",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -266,7 +274,7 @@ export const roomsDummyData = [
         "isAvailable": true,
         "createdAt": "2025-04-10T06:26:04.013Z",
         "updatedAt": "2025-04-10T06:26:04.013Z",
-        "__v": 0
+        "__v": 0,
     },
     {
         "name": "Verticla Blinds",
@@ -277,6 +285,12 @@ export const roomsDummyData = [
             "Blockout": 85,     // screen 없음
         },
         "projectTimeline": "1~2 weeks",
+        "subtitle": "Best for Sliding Doors and Wide Windows",
+        "description": `
+            Vertical blinds are practical for sliding doors and wide windows. 
+            Smooth operation, budget-friendly, and stylish.
+            `,
+        "trend": "Wider slats and textured fabrics give a fresh, elegant look.",
         "_id": "67f76452197ac559e4089b8e",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -297,6 +311,13 @@ export const roomsDummyData = [
             "Blockout": 140,
         },
         "projectTimeline": "2~3 weeks",
+        "subtitle": "Elegant and Versatile",
+        "description": `
+            Curtains add elegance and versatility. 
+            - Sheer: daytime privacy while letting light in.
+            - Blockout: perfect for bedrooms, improves insulation.
+            `,
+        "trend": "Layering sheer + blockout for hotel-style finish.",
         "_id": "67f76406197ac559e4089b82",
         "hotel": hotelDummyData,
         "roomType": "Double Bed",
@@ -313,10 +334,17 @@ export const roomsDummyData = [
         "slug": "shutter",
         "price": 170,
         "priceOptions": {
+            "White": 170, 
             "Black": 220, 
-            "White": 170  // 단일 옵션만 지원
+           
         },
         "projectTimeline": "1~2 months",
+        "subtitle": "Classic and Durable",
+        "description": `
+            Shutters are classic, durable, and energy-efficient. 
+            Provide insulation and timeless design. 
+            `,
+        "trend": "White plantation shutters remain the most popular.",
         "_id": "67f763d8197ac559e4089b7a",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
@@ -333,7 +361,13 @@ export const roomsDummyData = [
         "slug": "others",
         "price": 300,
         "priceOptions": null,
-        "projectTimeline": "a month",
+        "projectTimeline": "1 month",
+        "subtitle": "Functional with Style",
+         "description": `
+            Explore other custom options — including panel blinds, awnings, and more.
+            Talk to us for tailored recommendations.
+            `,
+        "trend": "others",
         "_id": "67f763d8197ac559e4089b7b",
         "hotel": hotelDummyData,
         "roomType": "Single Bed",
@@ -419,6 +453,8 @@ export const dashboardDummyData = {
     "totalRevenue": 897,
     "bookings": userBookingsDummyData
 }
+
+
 
 // --------- SVG code for Book Icon------
 /* 

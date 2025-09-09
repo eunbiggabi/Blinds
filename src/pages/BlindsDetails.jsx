@@ -5,7 +5,7 @@ import QuoteModal from "../components/QuoteModal";
 import BlindsPriceCalculator from "../components/BlindsPriceCalculator";
 import { facilityIcons } from "../assets/assets";
 
-const BlindsDetails = ({blinds}) => {
+const BlindsDetails = ({priceOptions}) => {
   const { slug } = useParams();
   const [room, setRoom] = useState(null);
   const [mainImage, setMainImage] = useState(null);
@@ -13,7 +13,7 @@ const BlindsDetails = ({blinds}) => {
   // 모달 제어
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quoteData, setQuoteData] = useState(null);
-  const keys = Object.keys(blinds[0].priceOptions);
+  const keys = room?.priceOptions ? Object.keys(room.priceOptions) : [];
 
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const BlindsDetails = ({blinds}) => {
   if (!room) {
     return (
       <div className="flex justify-center items-center h-[70vh]">
-        <p className="text-xl font-semibold">해당 블라인드를 찾을 수 없습니다.</p>
+        <p className="text-xl font-semibold">The requested blind cannot be found.</p>
       </div>
     );
   }
@@ -58,7 +58,7 @@ const BlindsDetails = ({blinds}) => {
       <div className="flex items-center gap-1 mt-2">
         <p className="text-xs font-inter py-1.5 px-3 text-white 
         bg-blue-500 rounded-full ">Project Timeline</p>
-        <span className="ml-2 font-inter text-sm">{blinds[0].projectTimeline}</span>
+        <span className="ml-2 font-inter text-sm">{room.projectTimeline}</span>
       </div>
 
       {/* 이미지 */}
@@ -90,8 +90,8 @@ const BlindsDetails = ({blinds}) => {
       <div className="flex flex-col md:flex-row md:justify-between mt-10">
         <div className="flex flex-col">
           <h1 className="text-3xl md:text-4xl font-playfair">
-            Our fabric range offers a three-tiered approach to light and privacy. </h1>
-            <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
+            {room.subtitle} </h1>
+            {/* <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
               {room.amenities.map((item, index) => (
                <div key={index} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100">
                   <img src={facilityIcons[item]} alt={item} className="w-5 h-5"/>
@@ -99,10 +99,10 @@ const BlindsDetails = ({blinds}) => {
                 </div>
              
             ))}  
-            </div>
+            </div> */}
         </div>
         {/* Blinds Price */}
-        <p className="text-2xl font-medium">${room.pricePerNight}/night</p>
+        {/* <p className="text-2xl font-medium">${room.pricePerNight}/night</p> */}
       </div>
 
 
@@ -120,7 +120,22 @@ const BlindsDetails = ({blinds}) => {
         onClose={handleCloseModal}
         quoteData={quoteData}
       />
+
+      {/* Common Specifications */}
+     
+         <div className="max-w-3xl border-y border-gray-300 
+            my-15 py-10 text-gray-500">
+          <p>{room.description}</p>
+          {room.trend !== "others" && (
+          <p className="mt-3 text-l md:text-xl">Trend 2025: {room.trend}</p>
+                )}
+        </div>
+
+       
+
     </div>
+
+    
   );
 };
 
