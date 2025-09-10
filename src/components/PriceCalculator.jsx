@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const PriceCalculator = ({ onRequestQuote }) => {
+const PriceCalculator = () => {
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
   const [blindType, setBlindType] = useState("roller");
   const [price, setPrice] = useState(null);
+  const [added, setAdded] = useState(false); // ✅ 추가됨 표시 상태
 
   const priceTable = {
     roller: 80,
     vertical: 80,
     curtain: 120,
-    shutter: 170,
+    shutter: 370,
   };
 
   const calculatePrice = () => {
@@ -20,6 +22,17 @@ const PriceCalculator = ({ onRequestQuote }) => {
     let total = (area * unitPrice).toFixed(2);
     if (total < 120) total = 120;
     setPrice(total);
+    setAdded(false); // 가격 다시 계산 시 "Added!" 표시 리셋
+  };
+
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    addToCart({ blindType, width, height, price });
+    setAdded(true);
+
+    // 2초 뒤에 원래 버튼으로 복구
+    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
@@ -71,17 +84,14 @@ const PriceCalculator = ({ onRequestQuote }) => {
           <p className="mt-4 text-lg font-semibold">
             Estimated Price: ${price}
           </p>
-          <p className="text-s text-gray-500 mt-1">
-            note: Fabric options may influence the final price.
-          </p>
 
           <button
-            className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg w-full font-bold"
-            onClick={() =>
-              onRequestQuote({ blindType, width, height, price })
-            }
+            className={`mt-4 px-4 py-2 rounded-lg w-full font-bold transition-colors ${
+              added ? "bg-green-600 text-white" : "bg-blue-500 text-white"
+            }`}
+            onClick={handleAddToCart}
           >
-            Request a Quote
+            {added ? "✅ Added to Cart!" : "Add to Cart"}
           </button>
         </>
       )}

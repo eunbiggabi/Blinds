@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
 import emailjs from "@emailjs/browser";
+import { CartContext } from "../context/CartContext";
+import { ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Blinds", path: "/blinds" },
-    { name: "Contact", path: "/" },
-    { name: "About", path: "/" },
+    { name: "About", path: "/" }, // Contact 제거
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,10 +18,11 @@ const Navbar = () => {
 
   const formRef = useRef();
 
-  // ✅ 주소 자동완성 관련
   const addressInputRef = useRef(null);
   const autocompleteRef = useRef(null);
   const [address, setAddress] = useState("");
+
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -28,7 +30,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ 모달 열릴 때만 Google Places Autocomplete 초기화
   useEffect(() => {
     if (!isFormOpen) return;
     if (!window.google) return;
@@ -100,9 +101,9 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-4 lg:gap-8">
           {navLinks.map((link, i) => (
-            <a
+            <Link
               key={i}
-              href={link.path}
+              to={link.path}
               className={`group flex flex-col gap-0.5 ${
                 isScrolled ? "text-gray-700" : "text-white"
               }`}
@@ -113,8 +114,24 @@ const Navbar = () => {
                   isScrolled ? "bg-gray-700" : "bg-white"
                 } h-0.5 w-0 group-hover:w-full transition-all duration-300`}
               />
-            </a>
+            </Link>
           ))}
+
+          {/* Cart 버튼 */}
+          <Link
+            to="/cart"
+            className="relative px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-500 bg-gray-100 hover:bg-gray-200"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            <span>Cart</span>
+            {cart.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                {cart.length}
+              </span>
+            )}
+          </Link>
+
+          {/* Quote Request */}
           <button
             onClick={() => setIsFormOpen(true)}
             className={`px-8 py-2.5 rounded-full ml-4 transition-all duration-500 ${
@@ -149,14 +166,29 @@ const Navbar = () => {
           </button>
 
           {navLinks.map((link, i) => (
-            <a
+            <Link
               key={i}
-              href={link.path}
+              to={link.path}
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
+
+          {/* Mobile Cart 버튼 */}
+          <Link
+            to="/cart"
+            onClick={() => setIsMenuOpen(false)}
+            className="relative bg-gray-100 px-6 py-2 rounded-full flex items-center gap-2"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            <span>Cart</span>
+            {cart.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                {cart.length}
+              </span>
+            )}
+          </Link>
 
           <button
             onClick={() => {
@@ -170,7 +202,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* ✅ Quote Request Form 모달 (주소 자동완성 적용됨) */}
+      {/* Quote Request Form 모달 */}
       {isFormOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl p-6 w-full max-w-lg text-black relative">

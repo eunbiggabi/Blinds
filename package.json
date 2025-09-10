@@ -23,6 +23,7 @@
     "express": "^5.1.0",
     "fs": "^0.0.1-security",
     "konva": "^9.3.22",
+    "lucide-react": "^0.543.0",
     "mime": "^4.0.7",
     "multer": "^2.0.2",
     "node-fetch": "^3.3.2",
