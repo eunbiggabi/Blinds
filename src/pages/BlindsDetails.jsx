@@ -127,7 +127,7 @@ const BlindsDetails = ({priceOptions}) => {
             my-15 py-10 text-gray-500">
           <p>{room.description}</p>
           {room.trend !== "others" && (
-          <p className="mt-3 text-l md:text-xl">Trend 2025: {room.trend}</p>
+          <p className="mt-3 text-l md:text-xl">Trend: {room.trend}</p>
                 )}
         </div>
 

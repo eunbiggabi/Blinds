@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { galleryImages } from "../assets/gallery/gallery";
+import Title from "../components/Title";
 
 // Room guides data (English)
 const roomGuides = [
@@ -75,7 +76,7 @@ const RoomGuide = () => {
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-20 pt-30">
       <h2 className="text-3xl font-bold text-center mb-12">
-        Room Guide – Recommended Blinds by Room
+        <Title title="Room Guide" subTitle="Recommended Blinds by Room" />
       </h2>
 
       {/* Room Cards */}
@@ -87,7 +88,7 @@ const RoomGuide = () => {
             className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-shadow cursor-pointer"
             onClick={() => setSelectedRoom(room)}
           >
-            <h3 className="text-2xl font-semibold mb-4">{room.title}</h3>
+            <h3 className="text-2xl mb-4">{room.title}</h3>
             {room.image && (
               <img
                 src={room.image}

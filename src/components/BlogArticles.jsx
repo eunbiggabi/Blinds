@@ -6,6 +6,7 @@ export const blogArticles = [
     key: "perfect-blinds",
     title: "Choosing the Perfect Blinds",
     image: galleryImages.roller[0],
+    category: "Choosing",
     content: `
 Selecting the perfect blinds for your home is both an art and a science. 
 Blinds not only provide privacy but also control natural light, 
@@ -28,6 +29,7 @@ By considering these factors, you ensure your blinds are not just decorative but
     key: "blind-care-tips",
     title: "Blind Care Tips",
     image: galleryImages.curtain[0],
+    category: "Care",
     content: `
 Proper care of your blinds ensures longevity and maintains their visual appeal. 
 For fabric roller or curtain blinds, regular vacuuming using a soft brush attachment removes dust and prevents buildup. 
@@ -50,6 +52,7 @@ By following these care tips, your blinds will remain functional, attractive, an
     key: "interior-trends",
     title: "Modern Interior Trends with Stylish Blinds",
     image: galleryImages.vertical[0],
+    category: "Trends",
     content: `
 Blinds are no longer just functional items; they are integral to modern interior design. 
 Contemporary homes often emphasize clean lines, natural light, and minimalism, and blinds play a central role in achieving these goals.
@@ -71,6 +74,7 @@ By selecting stylish and functional blinds, homeowners can transform their space
     key: "office-blinds",
     title: "Best Blinds for Office Spaces",
     image: galleryImages.panel[0],
+    category: "Office",
     content: `
 Choosing blinds for office spaces requires balancing functionality, aesthetics, and productivity. 
 Proper lighting is crucial, as glare from screens or excessive sunlight can cause eye strain and reduce efficiency.
@@ -92,6 +96,7 @@ By thoughtfully selecting blinds, office environments can become more comfortabl
     key: "rental-blinds",
     title: "Rental-Friendly Blinds",
     image: galleryImages.roller[1],
+    category: "Rental",
     content: `
 For rental properties, choosing blinds involves practicality, aesthetics, and minimal installation hassle. 
 Tenants often seek solutions that are easy to install and remove without damaging walls or window frames.
@@ -111,6 +116,7 @@ By selecting rental-friendly blinds, tenants can enjoy comfort, privacy, and sty
     key: "self-install-tips",
     title: "Self-Installation Considerations & Tips",
     image: galleryImages.roller[2],
+    category: "Self-Install",
     content: `
 Installing blinds yourself can save money and give a sense of accomplishment, 
 but proper planning and measurement are crucial for a successful outcome. 
@@ -134,6 +140,7 @@ By following these considerations, self-installation can be efficient, safe, and
 {
   key: "max-natural-light",
   title: "Maximizing Natural Light Without Sacrificing Privacy",
+  category: "Balance",
   content: `
 Balancing natural light and privacy in your home can dramatically enhance both comfort and aesthetics. 
 While large windows allow abundant sunlight, they can also expose your interior to neighbors or street view. 
@@ -155,6 +162,7 @@ By carefully selecting the right style, fabric, and installation method, homeown
 {
   key: "child-pet-safe",
   title: "Child and Pet Safe Window Solutions",
+  category: "Safe",
   content: `
 Homes with children or pets require additional consideration when selecting blinds. 
 Corded blinds, while elegant, pose serious safety risks. Opting for cordless designs or blinds with built-in safety mechanisms is highly recommended. 
@@ -176,6 +184,7 @@ By prioritizing child- and pet-safe solutions, homeowners can enjoy stylish wind
 {
   key: "eco-friendly-blinds",
   title: "Eco-Friendly and Sustainable Blinds",
+  category: "Sustainable",
   content: `
 Sustainability is becoming an essential consideration in home design, and window treatments are no exception. 
 Eco-friendly blinds not only reduce environmental impact but also enhance energy efficiency, comfort, and indoor air quality.
@@ -197,6 +206,60 @@ Motorized or smart blinds can further enhance energy savings by automatically ad
 By investing in eco-friendly blinds, homeowners contribute to sustainability goals, lower utility bills, and create a healthier indoor environment while maintaining style and functionality.
   `,
 },
+// ---- New Articles ----
+{
+  key: "art-of-choosing",
+  title: "The Art of Choosing the Right Blinds for Your Home",
+  category: "Choosing",
+  content: `
+Selecting blinds for your home is more than just picking a window covering; it’s about finding the perfect balance between practicality, aesthetics, and comfort. Blinds play a crucial role in regulating natural light, ensuring privacy, and enhancing the overall look of a room. The “art” of choosing the right blinds lies in carefully considering your lifestyle, the purpose of each space, and the mood you want to create.
+
+The first step is understanding your room’s function. Bedrooms, for example, benefit from blackout roller blinds that block light for restful sleep. Living rooms might require blinds that allow adjustable light control, such as Venetian or vertical styles, so the space feels bright during the day but cozy in the evening. Kitchens and bathrooms demand materials that resist moisture, like aluminum or PVC, while home offices often require blinds that minimize screen glare and improve productivity.
+
+Next, think about your home’s interior design. Minimalist spaces often pair well with roller blinds due to their sleek and modern appearance, while traditional interiors may look better with Roman or Venetian blinds that add texture and sophistication. Color also matters—neutral shades tend to blend seamlessly with most décor, while bolder tones can create a statement feature.
+
+Practical details shouldn’t be overlooked. If you have young children or pets, cordless or motorized blinds are a safer choice. Cleaning and maintenance are equally important—fabric blinds may need regular vacuuming, whereas aluminum and PVC options are easier to wipe clean. Energy efficiency is another factor worth considering, as certain blinds provide insulation that can help regulate indoor temperature and reduce energy bills.
+
+Ultimately, choosing the right blinds is about aligning function with personal style. By considering how each space is used and the atmosphere you want to create, you’ll transform your home into a place that feels both beautiful and comfortable.
+  `,
+},
+{
+  key: "roller-vs-venetian",
+  title: "Roller Blinds vs. Venetian Blinds: Which is Best?",
+  category: "Choosing",
+  content: `
+When it comes to window treatments, roller blinds and Venetian blinds stand out as two of the most popular choices. Both offer excellent functionality and style, yet their differences make each better suited for particular spaces and lifestyles. So which one is best for your home? The answer depends on your needs and priorities.
+
+Roller blinds are known for their simplicity and versatility. They consist of a single sheet of fabric that rolls neatly up and down, making them perfect for modern interiors. Their minimalistic look complements almost any room, and they are available in a wide range of fabrics—from sheer designs that soften natural light to blockout options ideal for bedrooms. Roller blinds are also highly practical, requiring little maintenance beyond occasional dusting or spot cleaning. Motorized versions offer even greater convenience, especially for hard-to-reach windows.
+
+Venetian blinds, on the other hand, are made of horizontal slats that can be tilted to control light and privacy. This design allows for precise adjustments, giving you flexibility to let in as much or as little sunlight as you like. Available in materials like wood, aluminum, and PVC, Venetian blinds provide a timeless and elegant look that works well in both classic and contemporary interiors. Wooden Venetians, for example, bring warmth and texture, while aluminum versions are durable and easy to clean—perfect for kitchens and bathrooms.
+
+In terms of functionality, roller blinds are better for spaces where simplicity, blackout, or insulation is a priority. Venetians excel in areas where light control and versatility matter most, such as living rooms or home offices. Cost is another consideration—roller blinds are often more budget-friendly, while Venetian blinds can be a long-term investment due to their durability.
+
+Ultimately, neither option is “better” overall; it comes down to lifestyle and design preferences. If you value clean lines and ease of use, roller blinds may be your best bet. If you want classic elegance and fine-tuned light control, Venetian blinds could be the perfect choice.
+  `,
+},
+{
+  key: "blinds-curtains-combo",
+  title: "Blinds and Curtains: The Perfect Combination",
+  category: "Choosing",
+  content: `
+Blinds and curtains don’t have to compete—they can actually complement each other beautifully to create a layered and luxurious window treatment. While blinds provide practical benefits like light control and privacy, curtains add softness, texture, and style. When combined thoughtfully, they strike the perfect balance between functionality and aesthetics.
+
+One of the main advantages of pairing blinds with curtains is versatility. Blinds, such as roller or Venetian styles, allow you to manage daylight throughout the day. Curtains, on the other hand, provide an additional layer that can block out light completely at night or enhance insulation during colder months. This combination not only improves comfort but also contributes to energy efficiency by keeping indoor temperatures stable.
+
+From a design perspective, the mix of blinds and curtains adds depth to a room. Curtains can soften the look of sleek blinds, preventing a space from feeling too minimalistic or bare. You can play with color and texture—neutral blinds paired with bold or patterned curtains can create a striking focal point, while tonal combinations achieve a more subtle and cohesive style.
+
+Practical considerations also matter. For instance, in bedrooms, blockout roller blinds paired with sheer curtains allow you to enjoy privacy and darkness when needed, while still letting in soft, diffused daylight during the day. In living rooms, Venetian blinds with flowing fabric curtains create a sophisticated yet comfortable ambiance.
+
+When planning this combination, think carefully about proportions. Floor-length curtains add drama and elegance, while shorter curtains may suit casual spaces. Mounting blinds inside the window frame and curtains outside ensures a clean, layered look without crowding the space.
+
+The blinds-and-curtains duo also increases property appeal. For rental properties or homes for sale, this combination often looks more polished and can make a room feel complete.
+
+In short, pairing blinds and curtains is not only practical but also a design choice that elevates your home’s atmosphere. By blending the structure of blinds with the softness of curtains, you achieve comfort, beauty, and functionality all in one.
+  `,
+},
+
 
  
 ];

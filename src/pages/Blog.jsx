@@ -3,8 +3,20 @@ import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Moon, Sun } from "lucide-react";
 import { blogArticles } from "../components/BlogArticles";
+import Title from "../components/Title";
 
-const categories = ["All", "Choosing", "Care", "Trends", "Office", "Rental", "Self-Install"];
+const categories = [
+  "All",
+  "Choosing",
+  "Care",
+  "Trends",
+  "Office",
+  "Rental",
+  "Self-Install",
+  "Balance",
+  "Safe",
+  "Sustainable",
+];
 const ARTICLES_PER_PAGE = 6;
 
 const BlogPage = () => {
@@ -14,15 +26,27 @@ const BlogPage = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // ✅ 검색어 & 텍스트 정규화 함수
+  const normalize = (text) =>
+    text
+      .toLowerCase()
+      .replace(/\s+/g, " ") // 여러 공백 → 하나
+      .trim();
+
   // 필터링 & 검색
   const filteredArticles = useMemo(() => {
+    const searchTerm = normalize(search);
+
     return blogArticles.filter((article) => {
       const matchesSearch =
-        article.title.toLowerCase().includes(search.toLowerCase()) ||
-        article.content.toLowerCase().includes(search.toLowerCase());
+        searchTerm === "" ||
+        normalize(article.title).includes(searchTerm) ||
+        normalize(article.content).includes(searchTerm);
+
+      // ✅ 카테고리 필드 기반 필터링
       const matchesCategory =
-        activeCategory === "All" ||
-        article.title.toLowerCase().includes(activeCategory.toLowerCase());
+        activeCategory === "All" || article.category === activeCategory;
+
       return matchesSearch && matchesCategory;
     });
   }, [search, activeCategory]);
@@ -36,12 +60,12 @@ const BlogPage = () => {
   const goToPage = (num) => setCurrentPage(num);
 
   return (
-    <div className={darkMode ? "dark bg-gray-900 text-gray-200" : "bg-gray-50 text-gray-900"}>
-      <div className="w-full max-w-7xl mx-auto px-4 py-20">
+    <div className={darkMode ? "dark bg-gray-900 text-gray-500" : "bg-gray-50 text-gray-900"}>
+      <div className="w-full max-w-7xl mx-auto px-4 py-20 pt-30">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4 md:mb-0">
-            Home & Blinds Insights Blog
+            <Title title="Home & Blinds Insights Blog" />
           </h2>
           <div className="flex items-center gap-4">
             <input
@@ -49,7 +73,10 @@ const BlogPage = () => {
               placeholder="Search articles..."
               className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1); // 검색하면 페이지 1로 리셋
+              }}
             />
             <button
               onClick={() => setDarkMode(!darkMode)}
@@ -147,7 +174,10 @@ const BlogPage = () => {
                 </h3>
 
                 {selectedArticle.content.split("\n\n").map((paragraph, idx) => (
-                  <p key={idx} className="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-200">
+                  <p
+                    key={idx}
+                    className="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-200"
+                  >
                     {paragraph}
                   </p>
                 ))}
