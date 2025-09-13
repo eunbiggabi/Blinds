@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import emailjs from "@emailjs/browser";
 import { CartContext } from "../context/CartContext";
-import { ShoppingCart } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ setScrollToBlinds }) => {
+  const navigate = useNavigate();
+
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Blinds", path: "/blinds" },
-    { name: "About", path: "/" }, // Contact 제거
+    { name: "Our Blinds", path: "/our_blinds" },
+    { name: "Room Guide", path: "/room_guide" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Blog", path: "/blog" },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,19 +20,20 @@ const Navbar = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const formRef = useRef();
-
   const addressInputRef = useRef(null);
   const autocompleteRef = useRef(null);
   const [address, setAddress] = useState("");
 
   const { cart } = useContext(CartContext);
 
+  // 스크롤 감지
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Google Autocomplete
   useEffect(() => {
     if (!isFormOpen) return;
     if (!window.google) return;
@@ -40,7 +44,12 @@ const Navbar = () => {
     const ac = new window.google.maps.places.Autocomplete(inputEl, {
       types: ["geocode"],
       componentRestrictions: { country: "au" },
-      fields: ["formatted_address", "geometry", "place_id", "address_components"],
+      fields: [
+        "formatted_address",
+        "geometry",
+        "place_id",
+        "address_components",
+      ],
     });
     autocompleteRef.current = ac;
 
@@ -58,9 +67,9 @@ const Navbar = () => {
     };
   }, [isFormOpen]);
 
+  // Email 전송
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         "service_wj2fibl",
@@ -80,6 +89,32 @@ const Navbar = () => {
       );
   };
 
+  // 메뉴 클릭 핸들러
+  const handleNavClick = (path) => {
+    if (path === "/") {
+      // Home 클릭 시
+      if (window.location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 50);
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else if (path === "/our_blinds") {
+      // Our Blinds 클릭 시
+      if (window.location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => setScrollToBlinds(true), 50);
+      } else {
+        setScrollToBlinds(true);
+      }
+    } else {
+      navigate(path);
+    }
+    setIsMenuOpen(false); // 모바일 메뉴 닫기
+  };
+
   return (
     <>
       <nav
@@ -89,21 +124,23 @@ const Navbar = () => {
             : "py-4 md:py-6"
         }`}
       >
-        {/* Logo */}
-        <Link to="/">
+        {/* Logo 버튼 */}
+        <button
+          onClick={() => handleNavClick("/")}
+        >
           <img
             src={assets.kaiblindslogo}
             alt="logo"
             className={`h-12 ${isScrolled && "invert opacity-80"}`}
           />
-        </Link>
+        </button>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-4 lg:gap-8">
           {navLinks.map((link, i) => (
-            <Link
+            <button
               key={i}
-              to={link.path}
+              onClick={() => handleNavClick(link.path)}
               className={`group flex flex-col gap-0.5 ${
                 isScrolled ? "text-gray-700" : "text-white"
               }`}
@@ -114,22 +151,8 @@ const Navbar = () => {
                   isScrolled ? "bg-gray-700" : "bg-white"
                 } h-0.5 w-0 group-hover:w-full transition-all duration-300`}
               />
-            </Link>
+            </button>
           ))}
-
-          {/* Cart 버튼 */}
-          <Link
-            to="/cart"
-            className="relative px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-500 bg-gray-100 hover:bg-gray-200"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            <span>Cart</span>
-            {cart.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                {cart.length}
-              </span>
-            )}
-          </Link>
 
           {/* Quote Request */}
           <button
@@ -166,35 +189,13 @@ const Navbar = () => {
           </button>
 
           {navLinks.map((link, i) => (
-            <Link
-              key={i}
-              to={link.path}
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <button key={i} onClick={() => handleNavClick(link.path)}>
               {link.name}
-            </Link>
+            </button>
           ))}
 
-          {/* Mobile Cart 버튼 */}
-          <Link
-            to="/cart"
-            onClick={() => setIsMenuOpen(false)}
-            className="relative bg-gray-100 px-6 py-2 rounded-full flex items-center gap-2"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            <span>Cart</span>
-            {cart.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                {cart.length}
-              </span>
-            )}
-          </Link>
-
           <button
-            onClick={() => {
-              setIsMenuOpen(false);
-              setIsFormOpen(true);
-            }}
+            onClick={() => setIsFormOpen(true)}
             className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500"
           >
             Quote Request

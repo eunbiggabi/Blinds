@@ -32,16 +32,16 @@ const Hero = () => {
       </p>
 
       {/* ✅ 가격 계산기 (Hero → 모달 제어) */}
-      <div className="">
+      {/* <div className="">
         <PriceCalculator onRequestQuote={handleOpenModal} />
-      </div>
+      </div> */}
 
       {/* ✅ 모달 */}
-      <QuoteModal
+      {/* <QuoteModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         quoteData={quoteData}
-      />
+      /> */}
     </div>
   );
 };

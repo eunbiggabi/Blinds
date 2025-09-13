@@ -101,7 +101,7 @@ const Cart = () => {
 
   return (
     <div className="py-28 px-4 md:px-16 lg:px-24 xl:px-32 relative">
-      <Title title="Cart" subTitle="Quick check up" align="left" />
+      <Title title="Cart" subTitle="Your blinds at a glance" align="left" />
 
       {/* Toast 알림 */}
       {showToast && (
@@ -111,7 +111,7 @@ const Cart = () => {
       )}
 
       {/* 버튼 그룹 */}
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center md:justify-start mb-6">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center md:justify-start mb-6 mt-10">
         <button
           onClick={handleBackHome}
           className="bg-blue-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-600 transition w-full md:w-auto"

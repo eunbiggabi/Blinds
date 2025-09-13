@@ -108,18 +108,18 @@ const BlindsDetails = ({priceOptions}) => {
 
 
       {/* 가격 계산기 */}
-      {room.slug !== "others" && (
+      {/* {room.slug !== "others" && (
         <div className="">
           <BlindsPriceCalculator basePrice={room.price} priceOptions={room.priceOptions} onRequestQuote={handleOpenModal} name={room.name}/>
         </div>
-      )}
+      )} */}
 
       {/* 모달 */}
-      <QuoteModal
+      {/* <QuoteModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         quoteData={quoteData}
-      />
+      /> */}
 
       {/* Common Specifications */}
      
