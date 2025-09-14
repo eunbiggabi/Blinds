@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
@@ -44,6 +45,34 @@ const App = () => {
 
   return (
     <CartProvider>
+      {/* 공통 SEO 기본 템플릿 */}
+      <Helmet>
+        <title>Nice Blinds | Custom Blinds in Australia</title>
+        <meta
+          name="description"
+          content="Premium custom blinds for homes and offices in Australia. Locally made, durable, and stylish."
+        />
+        <link rel="canonical" href="https://www.niceblinds.com.au/" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Nice Blinds | Custom Blinds in Australia" />
+        <meta
+          property="og:description"
+          content="High-quality blinds straight from our workshop. Durable, stylish, and tailored to your needs."
+        />
+        <meta property="og:image" content="/assets/og-image.jpg" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Nice Blinds | Custom Blinds in Australia" />
+        <meta
+          name="twitter:description"
+          content="Premium custom blinds for homes and offices. Locally made, durable, and stylish."
+        />
+        <meta name="twitter:image" content="/assets/og-image.jpg" />
+      </Helmet>
+
       <Navbar setScrollToBlinds={setScrollToBlinds} />
       <ScrollManager scrollToBlinds={scrollToBlinds} />
       <Routes>
@@ -59,8 +88,8 @@ const App = () => {
         <Route path="/blinds/:slug" element={<BlindsDetails blinds={roomsDummyData} />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/room_guide" element={<RoomGuide />} /> {/* 이 라우트를 추가하세요 */}
-        <Route path="/blog" element={<Blog />} /> {/* <--- 이 라우트를 추가하세요 */}
+        <Route path="/room_guide" element={<RoomGuide />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
       <Footer />
     </CartProvider>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Moon, Sun } from "lucide-react";
 import { blogArticles } from "../components/BlogArticles";
 import Title from "../components/Title";
+import { Helmet } from "react-helmet";
 
 const categories = [
   "All",
@@ -26,14 +27,9 @@ const BlogPage = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // ✅ 검색어 & 텍스트 정규화 함수
   const normalize = (text) =>
-    text
-      .toLowerCase()
-      .replace(/\s+/g, " ") // 여러 공백 → 하나
-      .trim();
+    text.toLowerCase().replace(/\s+/g, " ").trim();
 
-  // 필터링 & 검색
   const filteredArticles = useMemo(() => {
     const searchTerm = normalize(search);
 
@@ -43,7 +39,6 @@ const BlogPage = () => {
         normalize(article.title).includes(searchTerm) ||
         normalize(article.content).includes(searchTerm);
 
-      // ✅ 카테고리 필드 기반 필터링
       const matchesCategory =
         activeCategory === "All" || article.category === activeCategory;
 
@@ -61,6 +56,34 @@ const BlogPage = () => {
 
   return (
     <div className={darkMode ? "dark bg-gray-900 text-gray-500" : "bg-gray-50 text-gray-900"}>
+      {/* Helmet SEO */}
+      <Helmet>
+        <title>Home & Blinds Insights Blog | Nice Blinds</title>
+        <meta
+          name="description"
+          content="Explore our Home & Blinds blog with tips, trends, and guides to help you choose, care, and style your window coverings."
+        />
+        <link rel="canonical" href="https://www.niceblinds.com.au/blog" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Home & Blinds Insights Blog | Nice Blinds" />
+        <meta
+          property="og:description"
+          content="Discover our blog articles with insights on blinds selection, care, installation, and trends."
+        />
+        <meta property="og:image" content="/assets/blog-og.webp" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Home & Blinds Insights Blog | Nice Blinds" />
+        <meta
+          name="twitter:description"
+          content="Explore our blog with tips and guides to help you choose, care, and style your blinds."
+        />
+        <meta name="twitter:image" content="/assets/blog-og.webp" />
+      </Helmet>
+
       <div className="w-full max-w-7xl mx-auto px-4 py-20 pt-30">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-12">
@@ -75,7 +98,7 @@ const BlogPage = () => {
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
-                setCurrentPage(1); // 검색하면 페이지 1로 리셋
+                setCurrentPage(1);
               }}
             />
             <button

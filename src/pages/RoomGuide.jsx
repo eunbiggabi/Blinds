@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { galleryImages } from "../assets/gallery/gallery";
 import Title from "../components/Title";
+import { Helmet } from "react-helmet";
 
 // Room guides data (English)
 const roomGuides = [
@@ -15,7 +16,7 @@ const roomGuides = [
       Consider using blackout roller blinds or thick curtains to block morning sunlight, ensuring a restful sleep.
       Neutral tones and soft textures can create a calm, cozy atmosphere.
     `,
-    image: galleryImages.roller[7], // Roller image for Bedroom
+    image: galleryImages.roller[7],
   },
   {
     key: "living",
@@ -25,8 +26,7 @@ const roomGuides = [
       Vertical or curtain blinds allow natural light while maintaining privacy. 
       They also enhance the room's style and add a modern, elegant touch to your interior.
     `,
-    image: galleryImages.curtain[0], // Vertical image for Living Room
-    // If you want, you could alternate with curtain[0] in the future
+    image: galleryImages.curtain[0],
   },
   {
     key: "kitchen",
@@ -75,6 +75,35 @@ const RoomGuide = () => {
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 py-20 pt-30">
+      {/* Helmet SEO */}
+      <Helmet>
+        <title>Room Guide | Nice Blinds</title>
+        <meta
+          name="description"
+          content="Explore our Room Guide to find the recommended blinds for each room in your home."
+        />
+        <link rel="canonical" href="https://www.niceblinds.com.au/room-guide" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Room Guide | Nice Blinds" />
+        <meta
+          property="og:description"
+          content="Discover the perfect blinds for bedrooms, living rooms, kitchens, offices, and more."
+        />
+        <meta property="og:image" content="/assets/roomguide-og.webp" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.niceblinds.com.au/room-guide" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Room Guide | Nice Blinds" />
+        <meta
+          name="twitter:description"
+          content="Explore our Room Guide to find the recommended blinds for each room in your home."
+        />
+        <meta name="twitter:image" content="/assets/roomguide-og.webp" />
+      </Helmet>
+
       <h2 className="text-3xl font-bold text-center mb-12">
         <Title title="Room Guide" subTitle="Recommended Blinds by Room" />
       </h2>
@@ -92,8 +121,9 @@ const RoomGuide = () => {
             {room.image && (
               <img
                 src={room.image}
-                alt={room.title}
+                alt={`${room.title} blinds`}
                 className="w-full h-64 object-cover rounded-lg mb-4"
+                loading="lazy"
               />
             )}
             <p className="text-gray-700 whitespace-pre-line">{room.description}</p>
@@ -121,8 +151,9 @@ const RoomGuide = () => {
               {selectedRoom.image && (
                 <img
                   src={selectedRoom.image}
-                  alt={selectedRoom.title}
+                  alt={`${selectedRoom.title} blinds`}
                   className="w-full h-72 object-cover rounded-lg mb-6"
+                  loading="lazy"
                 />
               )}
               <p className="text-gray-700 whitespace-pre-line">{selectedRoom.description}</p>

@@ -1,35 +1,62 @@
 import React from "react";
+import { Helmet } from "react-helmet"; // ✅ SEO용
 import { assets } from "../assets/assets";
 
 const Footer = () => {
   return (
     <div className="text-gray-500/80 pt-12 px-6 md:px-16 lg:px-24 xl:px-32 bg-[#f6f9fc]">
-      <div className="flex flex-wrap justify-between gap-12 md:gap-6">
+      {/* ✅ SEO 메타 */}
+      <Helmet>
+        <meta
+          name="description"
+          content="Kai Blinds delivers premium custom blinds across Australia with trusted quality, professional service, and expert installation."
+        />
+        <meta property="og:title" content="Kai Blinds - Quality Custom Blinds in Australia" />
+        <meta
+          property="og:description"
+          content="Explore our custom blinds and experience professional installation and premium quality."
+        />
+        <meta property="og:image" content={assets.kaiblindslogo} />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
+      <div className="flex flex-wrap justify-center gap-12 md:gap-6">
         {/* Left Section - Logo + Description + Social */}
         <div className="max-w-80">
           <img
             src={assets.kaiblindslogo}
             alt="Kai Blinds Logo"
             className="mb-4 h-12 md:h-14"
+            loading="lazy"
           />
           <p className="text-sm leading-relaxed">
-            Delivering blinds with trusted quality and professional service, 
-            creating lasting comfort in every home.
+            Delivering blinds with trusted quality and professional service, creating lasting comfort in every home.
           </p>
           <div className="flex items-center gap-3 mt-4">
-            <a href="#" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/nice_blinds/"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={assets.instagramIcon}
-                alt="instagram-icon"
+                alt="Instagram Icon"
                 className="w-6 hover:opacity-80 transition"
+                loading="lazy"
               />
             </a>
-            <a href="#" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/NiceBlindsBrisbane/"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={assets.facebookIcon}
-                alt="facebook-icon"
+                alt="Facebook Icon"
                 className="w-6 hover:opacity-80 transition"
+                loading="lazy"
               />
             </a>
           </div>
@@ -44,23 +71,16 @@ const Footer = () => {
           </p>
           <p className="text-sm mt-3">
             <span className="font-medium text-gray-700">Email:</span> <br />
-            <a
-              href="mailto:niceblinds7@gmail.com"
-              className="hover:text-gray-700"
-            >
+            <a href="mailto:niceblinds7@gmail.com" className="hover:text-gray-700">
               kaiblinds@gmail.com
             </a>
           </p>
           <p className="text-sm mt-3">
-             <span className="font-medium text-gray-700">Phone:</span> <br />
-             <a
-                href="tel:0430080216"
-                className="hover:text-gray-700 transition"
-                >
-                 0430 080 216
-             </a>
-           </p>
-
+            <span className="font-medium text-gray-700">Phone:</span> <br />
+            <a href="tel:0430080216" className="hover:text-gray-700 transition">
+              0430 080 216
+            </a>
+          </p>
         </div>
 
         {/* Right Section - Business Hours + CTA + slogan */}
@@ -69,14 +89,7 @@ const Footer = () => {
           <p className="text-sm">Monday – Friday: 9:00 am – 5:00 pm</p>
           <p className="text-sm">Saturday – Sunday: Closed</p>
 
-          {/* CTA + Small Slogan */}
           <div className="mt-6 flex flex-col items-center gap-3">
-            {/* <a
-              href="/contact"
-              className="px-4 py-2 text-sm font-medium bg-gray-800 text-white rounded hover:bg-gray-700 transition"
-            >
-              Request a Free Quote
-            </a> */}
             <p className="text-xs text-gray-400 text-center max-w-xs">
               Trusted by homeowners across Australia for quality blinds and dedicated service.
             </p>
@@ -96,7 +109,7 @@ const Footer = () => {
           height="80"
           className="rounded-md shadow-md"
           style={{ border: 0 }}
-          allowFullScreen=""
+          allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
