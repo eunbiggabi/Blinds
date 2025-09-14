@@ -72,7 +72,7 @@ const Hero = () => {
         <div className="mt-8 flex justify-center">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#49B9FF] text-black font-bold px-8 py-3 rounded-full shadow-lg hover:bg-[#36A6E0] active:bg-[#2A89C0] transition-all duration-300"
+            className="bg-[#49B9FF] text-white font-bold px-8 py-3 rounded-full shadow-lg hover:bg-[#36A6E0] active:bg-[#2A89C0] transition-all duration-300"
           >
             Get a Free Quote
           </button>
