@@ -41,14 +41,14 @@ const Testimonial = () => {
               className="bg-white p-6 rounded-xl shadow max-w-xs"
             >
               <div className="flex items-center gap-3">
-                {testimonial.image && (
+                {/* {testimonial.image && (
                   <img
                     src={testimonial.image}
                     alt={`${testimonial.name} photo`}
                     className="w-12 h-12 rounded-full object-cover"
                     loading="lazy"
                   />
-                )}
+                )} */}
                 <div>
                   <p className="font-playfair text-xl">{testimonial.name}</p>
                   <p className="text-gray-500">{testimonial.address}</p>
