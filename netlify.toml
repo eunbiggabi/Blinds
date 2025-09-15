@@ -1,4 +1,4 @@
-﻿[build]
+[build]
   command = "cd vite-project && npm ci && npm run build"
   publish = "vite-project/dist"
 
