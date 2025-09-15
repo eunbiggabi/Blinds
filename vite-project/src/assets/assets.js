@@ -47,47 +47,47 @@ import kaiblindslogo from "./kaiblindslogo.jpeg";
 import awningImg1 from "@assets/awningImg1.jpg";
 
     // curtain
-import curtainImg1 from "./curtainImg1.jpg";
-import curtainImg2 from "./curtainImg2.jpg";
-import curtainImg3 from "./curtainImg3.jpg";
-import curtainImg4 from "./curtainImg4.jpg";
-import curtainImg5 from "./curtainImg5.jpg";
-import curtainImg6 from "./curtainImg6.jpg";
+import curtainImg1 from "@assets/curtainImg1.jpg";
+import curtainImg2 from "@assets/curtainImg2.jpg";
+import curtainImg3 from "@assets/curtainImg3.jpg";
+import curtainImg4 from "@assets/curtainImg4.jpg";
+import curtainImg5 from "@assets/curtainImg5.jpg";
+import curtainImg6 from "@assets/curtainImg6.jpg";
 
     //roller
-import rollerImg1 from "./rollerImg1.jpg";
-import rollerImg2 from "./rollerImg2.jpg";
-import rollerImg3 from "./rollerImg3.jpg";
-import rollerImg4 from "./rollerImg4.jpg";
-import rollerImg5 from "./rollerImg5.jpg";
-import rollerImg6 from "./rollerImg6.jpg";
-import rollerImg7 from "./rollerImg7.jpg";
-import rollerImg8 from "./rollerImg8.jpg";
+import rollerImg1 from "@assets/rollerImg1.jpg";
+import rollerImg2 from "@assets/rollerImg2.jpg";
+import rollerImg3 from "@assets/rollerImg3.jpg";
+import rollerImg4 from "@assets/rollerImg4.jpg";
+import rollerImg5 from "@assets/rollerImg5.jpg";
+import rollerImg6 from "@assets/rollerImg6.jpg";
+import rollerImg7 from "@assets/rollerImg7.jpg";
+import rollerImg8 from "@assets/rollerImg8.jpg";
 
     // vertical
-import verticalImg1 from "./verticalImg1.jpg";
-import verticalImg2 from "./verticalImg2.jpg";
-import verticalImg3 from "./verticalImg3.jpg";
-import verticalImg4 from "./verticalImg4.jpg";
-import verticalImg5 from "./verticalImg5.jpg";
-import verticalImg6 from "./verticalImg6.jpg";
+import verticalImg1 from "@assets/verticalImg1.jpg";
+import verticalImg2 from "@assets/verticalImg2.jpg";
+import verticalImg3 from "@assets/verticalImg3.jpg";
+import verticalImg4 from "@assets/verticalImg4.jpg";
+import verticalImg5 from "@assets/verticalImg5.jpg";
+import verticalImg6 from "@assets/verticalImg6.jpg";
 
     // shutter
-import shutterImg1 from "./shutterImg1.jpg";
-import shutterImg2 from "./shutterImg2.jpg";
-import shutterImg3 from "./shutterImg3.jpg";
-import shutterImg4 from "./shutterImg4.jpg";
-import shutterImg5 from "./shutterImg5.jpg";
-import shutterImg6 from "./shutterImg6.jpg";
-import shutterImg7 from "./shutterImg7.jpg";
+import shutterImg1 from "@assets/shutterImg1.jpg";
+import shutterImg2 from "@assets/shutterImg2.jpg";
+import shutterImg3 from "@assets/shutterImg3.jpg";
+import shutterImg4 from "@assets/shutterImg4.jpg";
+import shutterImg5 from "@assets/shutterImg5.jpg";
+import shutterImg6 from "@assets/shutterImg6.jpg";
+import shutterImg7 from "@assets/shutterImg7.jpg";
 
     // other
 
-import otherImg1 from "./otherImg1.jpg"
-import otherImg2 from "./otherImg2.jpg"
-import otherImg3 from "./otherImg3.jpg"
-import otherImg4 from "./otherImg4.jpg"
-import otherImg5 from "./otherImg5.jpg"
+import otherImg1 from "@assets/otherImg1.jpg"
+import otherImg2 from "@assets/otherImg2.jpg"
+import otherImg3 from "@assets/otherImg3.jpg"
+import otherImg4 from "@assets/otherImg4.jpg"
+import otherImg5 from "@assets/otherImg5.jpg"
 
 
 
