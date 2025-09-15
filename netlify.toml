@@ -1,7 +1,0 @@
-﻿[build]
-  command = "cd vite-project && npm install && npm run build"
-  publish = "vite-project/dist"
-
-[dev]
-  command = "cd vite-project && npm run dev"
-  port = 5173
