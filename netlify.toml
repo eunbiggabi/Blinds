@@ -1,6 +1,9 @@
 ﻿[build]
-  command = "cd vite-project && npm install && npm run build"
+  command = "cd vite-project && npm ci && npm run build"
   publish = "vite-project/dist"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [dev]
   command = "cd vite-project && npm run dev"
