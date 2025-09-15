@@ -1,4 +1,4 @@
-import logo from './logo.svg'
+﻿import logo from './logo.svg'
 import searchIcon from './searchIcon.svg'
 import userIcon from './userIcon.svg'
 import calenderIcon from './calenderIcon.svg'
@@ -41,7 +41,7 @@ import nice from "./nice.svg";
 import blinds from "./blinds.png";
 import kaiblindslogo from "./kaiblindslogo.jpeg";
 
-// 블라인드 이미지
+// 釉붾씪?몃뱶 ?대?吏
 
     // awning
 import awningImg1 from "./awningImg1.jpg";
@@ -282,7 +282,7 @@ export const roomsDummyData = [
         "price": 80,
         "priceOptions": {
             "Light Filter": 80,
-            "Blockout": 85,     // screen 없음
+            "Blockout": 85,     // screen ?놁쓬
         },
         "projectTimeline": "1~2 weeks",
         "subtitle": "Best for Sliding Doors and Wide Windows",
@@ -364,7 +364,7 @@ export const roomsDummyData = [
         "projectTimeline": "1 month",
         "subtitle": "Functional with Style",
          "description": `
-            Explore other custom options — including panel blinds, awnings, and more.
+            Explore other custom options ??including panel blinds, awnings, and more.
             Talk to us for tailored recommendations.
             `,
         "trend": "others",
