@@ -3,7 +3,7 @@
   publish = "vite-project/dist"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 [dev]
   command = "cd vite-project && npm run dev"
