@@ -44,7 +44,7 @@ import kaiblindslogo from "./kaiblindslogo.jpeg";
 // 釉붾씪?몃뱶 ?대?吏
 
     // awning
-import awningImg1 from "./awningImg1.jpg";
+import awningImg1 from "@assets/awningImg1.jpg";
 
     // curtain
 import curtainImg1 from "./curtainImg1.jpg";
